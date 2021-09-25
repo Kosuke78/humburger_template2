@@ -1,0 +1,94 @@
+/* 全体の設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* メニューの中身 */
+#gnav-content {
+    position: fixed;
+    top: 0;
+    /* left: -100%; */
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    /* 浮かび上がるように表示する */
+    display: none;
+    /* 全画面に表示 */
+    max-width: 100vw;
+    box-shadow: 6px 0 25px rgba(0, 0, 0, 0.15);
+    /* transition: all 0.3s ease; */
+}
+.gnav-list {
+    background-color: #1b9aaa;
+    padding: 0;
+    height: 100vh;
+    text-align: center;
+}
+.gnav-list li {
+    display: block;
+}
+.gnav-list li a {
+    display: block;
+    padding: 1.5em;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+}
+.gnav-list li a::first-line {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* checkboxを非表示に */
+.gnav-hidden {
+    display: none;
+}
+
+/* labelで作るメニューボタン */
+#gnav-btn {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 101;
+    background: url("./img/gnav-btn-open.png") center center no-repeat;
+}
+
+/* 薄い膜部分 */
+#gnav-black {
+    display: none;
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* チェックが入った時のスタイル */
+#gnav-input:checked ~ #gnav-btn {
+    background: #1b9aaa url("./img/gnav-btn-close.png") center center no-repeat;
+}
+#gnav-input:checked ~ #gnav-black {
+    /* display: block; */
+}
+#gnav-input:checked ~ #gnav-content {
+    /* left:0; */
+    /* 浮かび上がるように表示する */
+    display: block;
+    animation: show 0.5s linear 0s;
+}
+/* ふわっと浮かび上がらせるアニメーション */
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
